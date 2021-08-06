@@ -100,7 +100,7 @@
                 {% else %}
                   <img class="img-fluid" src='{% static "img/banner/blog.png" %}' >
                 {% endif %}
-                <ul class="thumb-info">
+                <ul style="max-width: 550px;" class="thumb-info">
                   <li><a href="#"><i class="ti-user"></i>{{ post.author }}</a></li>
                   <li><a href="#"><i class="ti-notepad"></i>{{ post.published_at }}</a></li>
                   <li><a href="#"><i class="ti-themify-favicon"></i>{{ post.comment_ammount }}</a></li>
