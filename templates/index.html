@@ -18,7 +18,7 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container box_1620">
           <!-- Brand and toggle get grouped for better mobile display -->
-          <a class="navbar-brand logo_h" href="index.html"><img src='{% static "img/logo.png" %}' alt=""></a>
+          <a class="navbar-brand logo_h" href="{% url 'index' %}"><img src='{% static "img/logo.png" %}' alt=""></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -27,8 +27,8 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-center">
-              <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+              <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-social">
               <li><a href="#"><i class="ti-facebook"></i></a></li>
@@ -59,9 +59,7 @@
     <!--================Hero Banner end =================-->
 
     <!--================ Blog slider start =================-->
-
       <section>
-
           <div class="container">
               <div class="d-flex">
                 {% for post in most_popular_posts %}
@@ -75,7 +73,7 @@
                           {% endif %}
                         </div>
                         <div class="blog__slide__content">
-                          <h3><a href="#">{{ post.title }}</a></h3>
+                          <h3><a href="{% url 'post_detail' post.slug%}">{{ post.title }}</a></h3>
                           <p>{{ post.published_at }}</p>
                         </div>
                       </div>
@@ -84,7 +82,6 @@
               </div>
           </div>
       </section>
-
     <!--================ Blog slider end =================-->
 
     <!--================ Start Blog Post Area =================-->
@@ -102,7 +99,7 @@
                   <img class="img-fluid" src='{% static "img/banner/blog.png" %}' >
                 {% endif %}
                 <ul style="max-width: 550px;" class="thumb-info">
-                  <li><a href="#"><i class="ti-user"></i>{{ post.author }}</a></li>
+                  <li><a href=""><i class="ti-user"></i>{{ post.author }}</a></li>
                   <li><a href="#"><i class="ti-notepad"></i>{{ post.published_at }}</a></li>
                   <li><a href="#"><i class="ti-themify-favicon"></i>{{ post.comment_ammount }}</a></li>
                 </ul>
@@ -110,7 +107,7 @@
               <div class="details mt-20">
                 <h3>{{ post.title }}</h3>
                 <p>{{ post.text|truncatechars:200 }}</p>
-                <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+                <a class="button" href="{% url 'post_detail' post.slug %}">Read More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           {% endfor %}
